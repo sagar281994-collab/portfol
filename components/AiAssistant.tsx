@@ -1,8 +1,8 @@
 
 import React, { useState } from 'react';
 import { Sparkles, Bot, Loader2, ExternalLink, Globe } from 'lucide-react';
-import { getTalentAdvice, TalentAdviceResponse } from '../services/geminiService';
-import { Theme } from '../types';
+import { getTalentAdvice, TalentAdviceResponse } from '../services/geminiService.ts';
+import { Theme } from '../types.ts';
 
 interface Props {
   theme: Theme;

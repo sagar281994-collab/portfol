@@ -1,14 +1,14 @@
 
 import React, { useState, useEffect } from 'react';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import About from './components/About';
-import Approach from './components/Approach';
-import SuccessStories from './components/SuccessStories';
-import AiAssistant from './components/AiAssistant';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
-import { Theme } from './types';
+import Navbar from './components/Navbar.tsx';
+import Hero from './components/Hero.tsx';
+import About from './components/About.tsx';
+import Approach from './components/Approach.tsx';
+import SuccessStories from './components/SuccessStories.tsx';
+import AiAssistant from './components/AiAssistant.tsx';
+import Contact from './components/Contact.tsx';
+import Footer from './components/Footer.tsx';
+import { Theme } from './types.ts';
 
 const App: React.FC = () => {
   const [theme, setTheme] = useState<Theme>('dark');

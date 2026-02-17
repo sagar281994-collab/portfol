@@ -1,7 +1,16 @@
 
 import { GoogleGenAI } from "@google/genai";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+// Safely get API key to prevent white screen if process is undefined
+const getApiKey = () => {
+  try {
+    return (window as any).process?.env?.API_KEY || (typeof process !== 'undefined' ? process.env.API_KEY : '');
+  } catch {
+    return '';
+  }
+};
+
+const ai = new GoogleGenAI({ apiKey: getApiKey() });
 
 export interface TalentAdviceResponse {
   text: string;
@@ -9,6 +18,14 @@ export interface TalentAdviceResponse {
 }
 
 export const getTalentAdvice = async (query: string): Promise<TalentAdviceResponse> => {
+  const apiKey = getApiKey();
+  if (!apiKey) {
+    return { 
+      text: "API Key is missing. Please ensure your environment is correctly configured.",
+      sources: []
+    };
+  }
+
   try {
     const response = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
